@@ -8,7 +8,7 @@ export default function PatentShowcase() {
       title: "Coffee Sleeve Integration",
       description: "Breath-freshening elements seamlessly integrated into protective coffee sleeves for maximum convenience.",
       icon: Coffee,
-      status: "Patent Pending",
+      status: "Learn More",
       statusColor: "bg-brand-gold"
     },
     {
@@ -16,16 +16,16 @@ export default function PatentShowcase() {
       title: "Peel-and-Stick Version",
       description: "Adhesive breath-freshening strips that can be applied to any existing coffee packaging solution.",
       icon: Tag,
-      status: "Patent Granted",
-      statusColor: "bg-green-600"
+      status: "Learn More",
+      statusColor: "bg-brand-navy"
     },
     {
       id: "lid-attached",
       title: "Lid-Attached Tamper-Proof",
       description: "Integrated lid system with tamper-evident sealing and breath-freshening technology for premium applications.",
       icon: Lock,
-      status: "Patent Pending",
-      statusColor: "bg-brand-navy"
+      status: "Learn More",
+      statusColor: "bg-brand-gold"
     }
   ];
 
