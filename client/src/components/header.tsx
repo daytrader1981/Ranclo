@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import rancloLogo from "@assets/Logo-02_1755027290970.png";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,12 +20,12 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center">
-                <span className="text-brand-gold font-bold text-lg">CM</span>
-              </div>
-              <div className="hidden sm:block">
-                <span className="text-brand-navy font-semibold text-lg">Ranclo LLC</span>
-              </div>
+              <img 
+                src={rancloLogo} 
+                alt="Ranclo LLC Logo" 
+                className="h-10 w-auto"
+                data-testid="company-logo"
+              />
             </div>
           </div>
           
