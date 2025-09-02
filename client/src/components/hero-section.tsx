@@ -24,14 +24,14 @@ export default function HeroSection() {
               <Button 
                 onClick={() => scrollToSection('patents')}
                 className="bg-brand-gold text-brand-navy hover:bg-brand-gold/90 font-semibold py-4 px-8 text-lg"
-                data-testid="button-explore-patents"
+                data-testid="button-explore-product"
               >
-                Explore Patents
+                Explore Product
               </Button>
               <Button 
                 onClick={() => scrollToSection('contact')}
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-brand-navy font-semibold py-4 px-8 text-lg"
+                className="border-2 border-white text-white hover:bg-white hover:text-brand-navy font-semibold py-4 px-8 text-lg font-sans"
                 data-testid="button-licensing-inquiry"
               >
                 Licensing Inquiry
