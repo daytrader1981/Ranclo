@@ -31,7 +31,7 @@ export default function HeroSection() {
               <Button 
                 onClick={() => scrollToSection('contact')}
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-brand-navy font-semibold py-4 px-8 text-lg font-sans"
+                className="border-2 border-white text-white font-semibold py-4 px-8 text-lg font-sans"
                 data-testid="button-licensing-inquiry"
               >
                 Licensing Inquiry
