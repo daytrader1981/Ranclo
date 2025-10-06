@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import caffeMentaLogo from "@assets/Caffe Menta logo_1755027255280.png";
+import rancloLogo from "@assets/Logo-01_1755027290969.png";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,8 +21,8 @@ export default function Header() {
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
               <img 
-                src={caffeMentaLogo} 
-                alt="Caffe' Menta Logo" 
+                src={rancloLogo} 
+                alt="Ranclo LLC Logo" 
                 className="h-10 w-auto"
                 data-testid="company-logo"
               />
