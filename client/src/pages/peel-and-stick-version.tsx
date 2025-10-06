@@ -1,6 +1,8 @@
 import { ArrowLeft, Tag, CheckCircle, Zap, DollarSign, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
+import peelStickImage1 from "@assets/Picture3_1759782607894.jpg";
+import peelStickImage2 from "@assets/Picture4_1759782607894.jpg";
 
 export default function PeelAndStickVersion() {
   const [, setLocation] = useLocation();
@@ -61,12 +63,20 @@ export default function PeelAndStickVersion() {
               </p>
             </div>
             <div className="bg-gray-100 rounded-xl p-8">
-              <img 
-                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Coffee packaging with adhesive solution" 
-                className="rounded-lg shadow-lg w-full h-64 object-cover"
-                data-testid="img-peel-stick"
-              />
+              <div className="grid grid-cols-2 gap-4">
+                <img 
+                  src={peelStickImage1} 
+                  alt="Peel-and-stick adhesive holder - red version" 
+                  className="rounded-lg shadow-lg w-full h-48 object-contain"
+                  data-testid="img-peel-stick-1"
+                />
+                <img 
+                  src={peelStickImage2} 
+                  alt="Peel-and-stick adhesive holder - transparent version" 
+                  className="rounded-lg shadow-lg w-full h-48 object-contain"
+                  data-testid="img-peel-stick-2"
+                />
+              </div>
             </div>
           </div>
 
