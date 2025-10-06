@@ -1,4 +1,5 @@
 import { Linkedin, Twitter } from "lucide-react";
+import rancloLogo from "@assets/Logo-01_1755027290969.png";
 
 export default function Footer() {
   const scrollToSection = (sectionId: string) => {
@@ -13,11 +14,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-brand-navy rounded-lg flex items-center justify-center">
-                <span className="text-brand-gold font-bold">CM</span>
-              </div>
-              <span className="text-xl font-semibold">Ranclo LLC</span>
+            <div className="mb-4">
+              <img 
+                src={rancloLogo} 
+                alt="Ranclo LLC Logo" 
+                className="h-12 w-auto"
+                data-testid="footer-logo"
+              />
             </div>
             <p className="text-gray-400 mb-4 max-w-md">
               Pioneering the future of coffee packaging with patented breath-freshening technology. 
