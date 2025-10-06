@@ -1,6 +1,7 @@
 import { ArrowLeft, Coffee, CheckCircle, Leaf, Shield, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
+import coffeeSleeveImage from "@assets/Picture1_1759782387757.png";
 
 export default function CoffeeSleeveIntegration() {
   const [, setLocation] = useLocation();
@@ -58,9 +59,9 @@ export default function CoffeeSleeveIntegration() {
             </div>
             <div className="bg-gray-100 rounded-xl p-8">
               <img 
-                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                src={coffeeSleeveImage} 
                 alt="Coffee cup with sleeve" 
-                className="rounded-lg shadow-lg w-full h-64 object-cover"
+                className="rounded-lg shadow-lg w-full h-64 object-contain"
                 data-testid="img-coffee-sleeve"
               />
             </div>
