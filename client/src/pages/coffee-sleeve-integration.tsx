@@ -126,10 +126,10 @@ export default function CoffeeSleeveIntegration() {
               <div className="flex items-start space-x-4" data-testid="application-convenience">
                 <CheckCircle className="text-brand-gold mt-1 flex-shrink-0" size={24} />
                 <div>
-                  <h4 className="font-semibold text-brand-navy mb-2">Convenience Stores</h4>
+                  <h4 className="font-semibold text-brand-navy mb-2">High End Branded Hotels and Restaurants</h4>
                   <p className="text-gray-600">
-                    Ideal for high-volume retailers serving on-the-go customers who appreciate convenient, 
-                    multi-functional packaging solutions.
+                    Ideal for luxury hospitality venues seeking to elevate the guest experience with 
+                    premium amenities that reflect their commitment to quality and sophistication.
                   </p>
                 </div>
               </div>
