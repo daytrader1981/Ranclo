@@ -28,7 +28,9 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="#" 
+                href="https://www.linkedin.com/company/ranclo-llc/?viewAsMember=true" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-brand-gold transition-colors"
                 data-testid="social-linkedin"
               >
