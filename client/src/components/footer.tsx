@@ -1,5 +1,5 @@
 import { Linkedin, Twitter } from "lucide-react";
-import rancloLogo from "@assets/Logo-01_1755027290969.png";
+import rancloLogo from "@assets/Logo-02_1755027290970.png";
 
 export default function Footer() {
   const scrollToSection = (sectionId: string) => {
