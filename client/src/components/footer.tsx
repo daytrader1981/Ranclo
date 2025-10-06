@@ -1,4 +1,4 @@
-import { Linkedin, Twitter } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import rancloLogo from "@assets/Logo-02_1755027290970.png";
 
 export default function Footer() {
@@ -33,13 +33,6 @@ export default function Footer() {
                 data-testid="social-linkedin"
               >
                 <Linkedin size={24} />
-              </a>
-              <a 
-                href="#" 
-                className="text-gray-400 hover:text-brand-gold transition-colors"
-                data-testid="social-twitter"
-              >
-                <Twitter size={24} />
               </a>
             </div>
           </div>
