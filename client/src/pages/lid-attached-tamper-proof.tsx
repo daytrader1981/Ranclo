@@ -62,13 +62,15 @@ export default function LidAttachedTamperProof() {
                 critical safety and hygiene concerns in today's marketplace.
               </p>
             </div>
-            <div className="bg-gray-100 rounded-xl p-8">
-              <img 
-                src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Coffee lid with security seal" 
-                className="rounded-lg shadow-lg w-full h-64 object-cover"
-                data-testid="img-lid-attached"
-              />
+            <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-xl p-8 flex items-center justify-center h-64">
+              <div className="text-center">
+                <div className="bg-brand-gold text-brand-navy px-6 py-3 rounded-lg font-bold text-2xl mb-4 inline-block shadow-lg">
+                  NEW
+                </div>
+                <h3 className="text-white text-3xl font-bold" data-testid="img-lid-attached">
+                  COMING SOON
+                </h3>
+              </div>
             </div>
           </div>
 
