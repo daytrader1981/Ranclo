@@ -166,7 +166,15 @@ export default function CoffeeSleeveIntegration() {
               Our team is ready to discuss licensing opportunities and implementation strategies.
             </p>
             <Button 
-              onClick={() => setLocation('/#contact')}
+              onClick={() => {
+                setLocation('/');
+                setTimeout(() => {
+                  const element = document.getElementById('contact');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }, 100);
+              }}
               size="lg"
               className="bg-brand-gold text-brand-navy hover:bg-brand-gold/90 font-semibold text-lg px-8 py-6"
               data-testid="button-contact"
