@@ -1,7 +1,10 @@
 import { Coffee, Tag, Lock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { useLocation } from "wouter";
 
 export default function PatentShowcase() {
+  const [, setLocation] = useLocation();
+  
   const patents = [
     {
       id: "sleeve-integration",
@@ -47,6 +50,11 @@ export default function PatentShowcase() {
             return (
               <div 
                 key={patent.id}
+                onClick={() => {
+                  if (patent.id === 'sleeve-integration') {
+                    setLocation('/coffee-sleeve-integration');
+                  }
+                }}
                 className="bg-gray-50 rounded-xl p-8 hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-brand-gold group"
                 data-testid={`patent-card-${patent.id}`}
               >
