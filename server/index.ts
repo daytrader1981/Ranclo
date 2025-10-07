@@ -38,7 +38,11 @@ app.use((req, res, next) => {
 
 (async () => {
   try {
+    console.log("Starting server initialization...");
+    console.log("Environment:", process.env.NODE_ENV || "production");
+    
     const server = await registerRoutes(app);
+    console.log("Routes registered successfully");
 
     app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
       const status = err.status || err.statusCode || 500;
@@ -52,8 +56,10 @@ app.use((req, res, next) => {
     // setting up all the other routes so the catch-all route
     // doesn't interfere with the other routes
     if (app.get("env") === "development") {
+      console.log("Setting up Vite in development mode");
       await setupVite(app, server);
     } else {
+      console.log("Serving static files in production mode");
       serveStatic(app);
     }
 
@@ -62,15 +68,30 @@ app.use((req, res, next) => {
     // this serves both the API and the client.
     // It is the only port that is not firewalled.
     const port = parseInt(process.env.PORT || '5000', 10);
+    console.log(`Attempting to listen on port ${port}...`);
+    
     server.listen({
       port,
       host: "0.0.0.0",
       reusePort: true,
     }, () => {
+      console.log(`Server successfully started on port ${port}`);
       log(`serving on port ${port}`);
     });
+
+    server.on('error', (error: any) => {
+      console.error("Server error:", error);
+      if (error.code === 'EADDRINUSE') {
+        console.error(`Port ${port} is already in use`);
+      }
+    });
   } catch (error) {
-    console.error("Failed to initialize server:", error);
+    console.error("Fatal error during server initialization:");
+    console.error(error);
+    if (error instanceof Error) {
+      console.error("Error message:", error.message);
+      console.error("Error stack:", error.stack);
+    }
     process.exit(1);
   }
 })();
