@@ -1,6 +1,43 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+import fs from "fs";
+import path from "path";
+
+// Helper function for logging (replicated to avoid importing from vite.ts in production)
+function log(message: string, source = "express") {
+  const formattedTime = new Date().toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
+  console.log(`${formattedTime} [${source}] ${message}`);
+}
+
+// Serve static files in production (replicated to avoid importing from vite.ts which requires vite package)
+function serveStatic(app: express.Express) {
+  const distPath = path.resolve(import.meta.dirname, "public");
+
+  if (!fs.existsSync(distPath)) {
+    console.warn(
+      `Warning: Build directory not found at ${distPath}. Serving fallback response.`
+    );
+    app.use("*", (_req, res) => {
+      res.status(503).json({ 
+        error: "Service Unavailable", 
+        message: "The application build is not available. Please run 'npm run build' first." 
+      });
+    });
+    return;
+  }
+
+  app.use(express.static(distPath));
+
+  // fall through to index.html if the file doesn't exist
+  app.use("*", (_req, res) => {
+    res.sendFile(path.resolve(distPath, "index.html"));
+  });
+}
 
 const app = express();
 app.use(express.json());
@@ -57,7 +94,72 @@ app.use((req, res, next) => {
     // doesn't interfere with the other routes
     if (app.get("env") === "development") {
       console.log("Setting up Vite in development mode");
-      await setupVite(app, server);
+      // Dynamically import vite and its plugins to avoid bundling them
+      const { createServer: createViteServer } = await import("vite");
+      const reactPlugin = await import("@vitejs/plugin-react");
+      const runtimeErrorOverlay = await import("@replit/vite-plugin-runtime-error-modal");
+      const { nanoid } = await import("nanoid");
+      
+      // Build vite config inline to avoid importing vite.config.ts (which imports vite)
+      const plugins = [
+        reactPlugin.default(),
+        runtimeErrorOverlay.default(),
+      ];
+      
+      if (process.env.REPL_ID !== undefined) {
+        const cartographer = await import("@replit/vite-plugin-cartographer");
+        plugins.push(cartographer.cartographer());
+      }
+      
+      const vite = await createViteServer({
+        plugins,
+        resolve: {
+          alias: {
+            "@": path.resolve(import.meta.dirname, "..", "client", "src"),
+            "@shared": path.resolve(import.meta.dirname, "..", "shared"),
+            "@assets": path.resolve(import.meta.dirname, "..", "attached_assets"),
+          },
+        },
+        root: path.resolve(import.meta.dirname, "..", "client"),
+        build: {
+          outDir: path.resolve(import.meta.dirname, "..", "dist/public"),
+          emptyOutDir: true,
+        },
+        configFile: false,
+        server: {
+          middlewareMode: true,
+          hmr: { server },
+          allowedHosts: true as const,
+          fs: {
+            strict: true,
+            deny: ["**/.*"],
+          },
+        },
+        appType: "custom",
+      });
+
+      app.use(vite.middlewares);
+      app.use("*", async (req, res, next) => {
+        const url = req.originalUrl;
+        try {
+          const clientTemplate = path.resolve(
+            import.meta.dirname,
+            "..",
+            "client",
+            "index.html",
+          );
+          let template = await fs.promises.readFile(clientTemplate, "utf-8");
+          template = template.replace(
+            `src="/src/main.tsx"`,
+            `src="/src/main.tsx?v=${nanoid()}"`,
+          );
+          const page = await vite.transformIndexHtml(url, template);
+          res.status(200).set({ "Content-Type": "text/html" }).end(page);
+        } catch (e) {
+          vite.ssrFixStacktrace(e as Error);
+          next(e);
+        }
+      });
     } else {
       console.log("Serving static files in production mode");
       serveStatic(app);
