@@ -11,7 +11,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
-import contactImage from "@assets/generated_images/Professional_with_coffee_cup_smiling_d24dd315.png";
 
 export default function ContactSection() {
   const { toast } = useToast();
@@ -240,8 +239,8 @@ export default function ContactSection() {
 
             <div className="rounded-xl overflow-hidden">
               <img 
-                src={contactImage} 
-                alt="Professional with coffee cup" 
+                src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                alt="Coffee retail business environment" 
                 className="w-full h-64 object-cover"
                 data-testid="contact-business-image"
               />

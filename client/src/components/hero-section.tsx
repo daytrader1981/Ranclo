@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import heroImage from "@assets/generated_images/Professional_with_coffee_cup_smiling_d24dd315.png";
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
@@ -40,8 +41,8 @@ export default function HeroSection() {
           </div>
           <div className="relative">
             <img 
-              src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-              alt="Coffee cup manufacturing process" 
+              src={heroImage} 
+              alt="Professional with coffee cup" 
               className="rounded-xl shadow-2xl w-full"
               data-testid="hero-image"
             />
