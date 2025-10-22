@@ -1,6 +1,7 @@
 import { Coffee, Tag, Lock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useLocation } from "wouter";
+import patentDemoImage from "@assets/generated_images/Coffee_cups_and_brewing_equipment_ac683f85.png";
 
 export default function PatentShowcase() {
   const [, setLocation] = useLocation();
@@ -82,8 +83,8 @@ export default function PatentShowcase() {
 
         <div className="mt-16">
           <img 
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=300" 
-            alt="Patent technology demonstration" 
+            src={patentDemoImage} 
+            alt="Coffee cups and brewing equipment showcase" 
             className="rounded-xl shadow-lg w-full h-48 object-cover"
             data-testid="patent-demo-image"
           />
